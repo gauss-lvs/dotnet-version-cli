@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/skarpdev/dotnet-version-cli/</RepositoryUrl>
     <PackageId>dotnet-version-cli-gauss</PackageId>
     <Company>SKARP ApS</Company>
-    <ProjectGuid>1ae7aff7-e333-4205-aa1b-b8a8a79b4a87</ProjectGuid>
+    <ProjectGuid>7c4ee361-d73e-4407-b35b-f38fcc4424ce</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
