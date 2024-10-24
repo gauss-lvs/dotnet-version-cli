@@ -43,7 +43,7 @@ If the current directory does not contain the `csproj` file to work on the `-f|-
 To install the tool simply issue
 
 ```bash
-dotnet tool install -g dotnet-version-cli
+dotnet tool install -g dotnet-version-cli-gauss
 ```
 
 Now it should be available as
@@ -194,6 +194,14 @@ You can then use `dotnet version` to change the version in `Common.targets`:
 ```powershell
 dotnet version -f Common.targets
 ```
+
+## Build
+
+```bash
+$ dotnet build -c Release
+$ dotnet pack .\src\dotnet-version.csproj -c Release -o P:\Entwicklung\NugetPackages
+```
+
 
 [1]: https://docs.npmjs.com/cli/version
 [nuget-image]: https://img.shields.io/nuget/v/dotnet-version-cli.svg
