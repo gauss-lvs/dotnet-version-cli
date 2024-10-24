@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.CommandLineUtils;
+using McMaster.Extensions.CommandLineUtils;
 using Skarp.Version.Cli.CsProj;
 using Skarp.Version.Cli.CsProj.FileSystem;
 using Skarp.Version.Cli.Vcs;
@@ -18,11 +18,12 @@ namespace Skarp.Version.Cli
         {
             SetUpDependencies();
 
-            var commandLineApplication = new CommandLineApplication(throwOnUnexpectedArg: false)
+            var commandLineApplication = new CommandLineApplication()
             {
                 Name = "dotnet version",
                 ExtendedHelpText =
-                    $"{Environment.NewLine}Available commands after [options] to control the version bump are: {Environment.NewLine}\tmajor | minor | patch | build | premajor | preminor | prepatch | prerelease | <specific version>"
+                    $"{Environment.NewLine}Available commands after [options] to control the version bump are: {Environment.NewLine}\tmajor | minor | patch | build | premajor | preminor | prepatch | prerelease | <specific version>",
+                UnrecognizedArgumentHandling = UnrecognizedArgumentHandling.CollectAndContinue,
             };
 
             commandLineApplication.HelpOption("-? | -h | --help");
@@ -143,7 +144,7 @@ namespace Skarp.Version.Cli
         }
 
         internal static VersionCliArgs GetVersionBumpFromRemainingArgs(
-            List<string> remainingArguments,
+            IEnumerable<string> remainingArguments,
             OutputFormat outputFormat,
             bool doVcs,
             bool dryRunEnabled,
