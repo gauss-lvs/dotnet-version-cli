@@ -14,6 +14,7 @@ namespace Skarp.Version.Cli.Test
         [InlineData("preminor", VersionBump.PreMinor)]
         [InlineData("patch", VersionBump.Patch)]
         [InlineData("prepatch", VersionBump.PrePatch)]
+        [InlineData("build", VersionBump.Build)]
         [InlineData("1.0.1", VersionBump.Specific)]
         [InlineData("1.0.1-0", VersionBump.Specific)]
         [InlineData("1.0.1-0+master", VersionBump.Specific)]
@@ -57,7 +58,7 @@ namespace Skarp.Version.Cli.Test
                 )
             );
             Assert.Contains(
-                $"No version bump specified, please specify one of:\n\tmajor | minor | patch | premajor | preminor | prepatch | prerelease | <specific version>",
+                $"No version bump specified, please specify one of:\n\tmajor | minor | patch | build | premajor | preminor | prepatch | prerelease | <specific version>",
                 ex.Message);
         }
 

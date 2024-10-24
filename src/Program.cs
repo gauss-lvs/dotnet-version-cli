@@ -22,7 +22,7 @@ namespace Skarp.Version.Cli
             {
                 Name = "dotnet version",
                 ExtendedHelpText =
-                    $"{Environment.NewLine}Available commands after [options] to control the version bump are: {Environment.NewLine}\tmajor | minor | patch | premajor | preminor | prepatch | prerelease | <specific version>"
+                    $"{Environment.NewLine}Available commands after [options] to control the version bump are: {Environment.NewLine}\tmajor | minor | patch | build | premajor | preminor | prepatch | prerelease | <specific version>"
             };
 
             commandLineApplication.HelpOption("-? | -h | --help");
@@ -158,7 +158,7 @@ namespace Skarp.Version.Cli
             if (remainingArguments == null || !remainingArguments.Any())
             {
                 var msgEx =
-                    "No version bump specified, please specify one of:\n\tmajor | minor | patch | premajor | preminor | prepatch | prerelease | <specific version>";
+                    "No version bump specified, please specify one of:\n\tmajor | minor | patch | build | premajor | preminor | prepatch | prerelease | <specific version>";
                 // ReSharper disable once NotResolvedInText
                 throw new ArgumentException(msgEx);
             }

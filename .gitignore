@@ -36,3 +36,4 @@ msbuild.wrn
 .idea/
 .fake
 .ionide
+/src/Properties/launchSettings.json

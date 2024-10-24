@@ -14,6 +14,8 @@ namespace Skarp.Version.Cli
 
         Patch,
 
+        Build,
+
         PreMajor,
         
         PreMinor,

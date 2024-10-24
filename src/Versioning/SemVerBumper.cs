@@ -40,6 +40,11 @@ namespace Skarp.Version.Cli.Versioning
                     HandleMinorBump(newVersion);
                     break;
                 }
+                case VersionBump.Build:
+                {
+                    HandleBuildBump(newVersion);
+                    break;
+                }
                 case VersionBump.PreMinor:
                 {
                     HandlePreMinorBump(newVersion, preReleasePrefix);
@@ -88,8 +93,14 @@ namespace Skarp.Version.Cli.Versioning
             newVersion.Major = specific.Major;
             newVersion.Minor = specific.Minor;
             newVersion.Patch = specific.Patch;
+            newVersion.Build = specific.Build;
             newVersion.PreRelease = specific.PreRelease;
             newVersion.BuildMeta = specific.BuildMeta;
+        }
+
+        private void HandleBuildBump(SemVer newVersion)
+        {
+            newVersion.Build = (newVersion.Build ?? 0) + 1;
         }
 
         private static void HandlePreReleaseBump(SemVer newVersion)
@@ -133,6 +144,8 @@ namespace Skarp.Version.Cli.Versioning
                 preReleasePrefix = "next";
             }
             newVersion.Patch += 1;
+            if(newVersion.Build != null)
+                newVersion.Build = 0;
             newVersion.PreRelease = $"{preReleasePrefix}.0";
         }
 
@@ -141,6 +154,8 @@ namespace Skarp.Version.Cli.Versioning
             if (!newVersion.IsPreRelease)
             {
                 newVersion.Patch += 1;
+                if(newVersion.Build != null)
+                    newVersion.Build = 0;
             }
             else
             {
@@ -158,6 +173,8 @@ namespace Skarp.Version.Cli.Versioning
             
             newVersion.Minor += 1;
             newVersion.Patch = 0;
+            if(newVersion.Build != null)
+                newVersion.Build = 0;
             newVersion.PreRelease = $"{preReleasePrefix}.0";
         }
 
@@ -172,6 +189,8 @@ namespace Skarp.Version.Cli.Versioning
             {
                 newVersion.Minor += 1;
                 newVersion.Patch = 0;
+                if(newVersion.Build != null)
+                    newVersion.Build = 0;
             }
         }
 
@@ -185,6 +204,8 @@ namespace Skarp.Version.Cli.Versioning
             newVersion.Major += 1;
             newVersion.Minor = 0;
             newVersion.Patch = 0;
+            if(newVersion.Build != null)
+                newVersion.Build = 0;
             newVersion.PreRelease = $"{preReleasePrefix}.0";
         }
 
@@ -200,6 +221,8 @@ namespace Skarp.Version.Cli.Versioning
                 newVersion.Major += 1;
                 newVersion.Minor = 0;
                 newVersion.Patch = 0;
+                if(newVersion.Build != null)
+                    newVersion.Build = 0;
             }
         }
     }

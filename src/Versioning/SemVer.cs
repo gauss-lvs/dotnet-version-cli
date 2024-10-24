@@ -10,7 +10,7 @@ namespace Skarp.Version.Cli.Versioning
         // this lovely little regex comes from the SemVer spec:
         // https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
         private static readonly Regex VersionPartRegex = new Regex(
-            @"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$",
+            @"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.([0-9]\d*))?(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$",
             RegexOptions.Compiled,
             TimeSpan.FromSeconds(2)
         );
@@ -25,6 +25,10 @@ namespace Skarp.Version.Cli.Versioning
         {
             var sb = new StringBuilder();
             sb.Append($"{Major}.{Minor}.{Patch}");
+            if(Build != null)
+            {
+                sb.Append($".{Build}");
+            }
 
             if (!string.IsNullOrWhiteSpace(PreRelease))
             {
@@ -64,8 +68,9 @@ namespace Skarp.Version.Cli.Versioning
                 Major = Convert.ToInt32(matches.Groups[1].Value),
                 Minor = Convert.ToInt32(matches.Groups[2].Value),
                 Patch = Convert.ToInt32(matches.Groups[3].Value),
-                PreRelease = matches.Groups[4].Value,
-                BuildMeta = matches.Groups[5].Value
+                Build = !String.IsNullOrEmpty(matches.Groups[4].Value) ? Convert.ToInt32(matches.Groups[4].Value) : null,
+                PreRelease = matches.Groups[5].Value,
+                BuildMeta = matches.Groups[6].Value
             };
         }
 
@@ -91,6 +96,11 @@ namespace Skarp.Version.Cli.Versioning
         /// </summary>
         /// <returns></returns>
         public int Patch { get; set; }
+
+        /// <summary>
+        /// The parse build version
+        /// </summary>
+        public int? Build { get; set; }
 
         /// <summary>
         /// Pre-release semver 2 information (the stuff added with a dash after version)
