@@ -16,7 +16,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/skarpdev/dotnet-version-cli/</RepositoryUrl>
-    <PackageId>dotnet-version-cli</PackageId>
+    <PackageId>dotnet-version-cli-gauss</PackageId>
     <Company>SKARP ApS</Company>
     <ProjectGuid>1ae7aff7-e333-4205-aa1b-b8a8a79b4a87</ProjectGuid>
   </PropertyGroup>
