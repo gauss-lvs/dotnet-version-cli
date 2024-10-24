@@ -127,18 +127,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "v2.0.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "v2.0.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -166,18 +166,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0-next.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "v2.0.0-next.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "v2.0.0-next.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -206,18 +206,18 @@ namespace Skarp.Version.Cli.Test
                     "2.0.0-beta.0",
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     csProjFilePath))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     csProjFilePath,
                     "v2.0.0-beta.0"))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     "v2.0.0-beta.0"))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -246,18 +246,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0-next.0+master"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "v2.0.0-next.0+master")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "v2.0.0-next.0+master")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -285,10 +285,10 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(A<string>._, A<string>._)).MustNotHaveHappened();
             A.CallTo(() => _vcsTool.Tag(A<string>._)).MustNotHaveHappened();
         }
@@ -357,18 +357,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "commit message")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "v2.0.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -401,18 +401,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "bump from v1.2.1 to v2.0.0 at unit-test")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "v2.0.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -441,18 +441,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "v2.0.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "vcs tag")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
@@ -485,18 +485,18 @@ namespace Skarp.Version.Cli.Test
                     A<string>.That.Matches(newVer => newVer == "2.0.0"),
                     ProjectFileProperty.Version
                 ))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
 
             A.CallTo(() => _filePatcher.Flush(
                     A<string>.That.Matches(path => path == csProjFilePath)))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Commit(
                     A<string>.That.Matches(path => path == csProjFilePath),
                     A<string>.That.Matches(msg => msg == "v2.0.0")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
             A.CallTo(() => _vcsTool.Tag(
                     A<string>.That.Matches(tag => tag == "bump from v1.2.1 to v2.0.0 at unit-test")))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappened(1, Times.Exactly);
         }
 
         [Fact]
